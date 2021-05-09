@@ -36,24 +36,33 @@
         const arr = request.response;
         const str = JSON.stringify(arr, null, '\t');
         console.log(str);
-        const map = arr.map(x => '<div class="card-group">' +
+        const map = arr.map(x => '<div class="card-group my-2">' +
           '<div class="card">' +
             '<div class="card-header">' + x['title'] + '</div>' +
-	    '<div class="row g-0">' +
+            '<div class="row">' +
               '<div class="col-md-6">' +
-		'<div class="card-body">' +
-		    '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + x['id'] + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
+                '<div class="card-body">' +
+                  '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + x['id'] + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
                 '</div>' +
               '</div>' +
               '<div class="col-md-6">' +
-		'<div class="card-body">' +
-		  '<iframe width="560" height="315" src="' + x['twitter'] + '.html"></iframe>' +
+                '<div class="card-body">' + 
+                  (x['twitter'] ? '<iframe width="560" height="315" src="' + x['twitter'] + '.html"></iframe>' : '') +
                 '</div>' +
-	      '</div>' +
+              '</div>' +
             '</div>' +
           '</div>' +
         '</div>');
-        document.getElementById('list').innerHTML = '<div class="container-fluid">' + map.join('') + '</div>';
+        document.getElementById('list').innerHTML = '<div class="container-fluid">' +
+          '<div class="row">' +
+            '<div class="col">' +
+              map.slice(0, map.length/2).join('') +
+            '</div>' +
+            '<div class="col">' +
+              map.slice(map.length/2).join('') +
+            '</div>' +
+          '</div>' +
+        '</div>';
       }
     </script>
   </body>
