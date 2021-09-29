@@ -15,6 +15,19 @@
     <div class="ratio ratio-16x9">
       <div id="player"></div>
     </div>
+    <div class="container-fluid my-3">
+      <form method="get" class="row g-3 d-flex justify-content-end" id="tweetForm" name="tweetForm">
+        <input id="url" name="url" type="hidden">
+        <div class="col-sm-8">
+          <textarea class="form-control" id="text" name="text" rows="5"></textarea>
+        </div>
+        <input id="via" name="via" type="hidden" value="YouTube">
+        <input id="related" name="related" type="hidden" value="YouTube,YouTubeTrends,YTCreators">
+        <div class="col-auto d-flex align-items-end">
+          <button type="submit" class="btn btn-primary" onclick="tweet()">Submit</button>
+        </div>
+      </form>
+    </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -55,6 +68,12 @@
       function onPlayerReady(event) {
         event.target.setPlaybackRate(1.5);
         event.target.playVideo();
+      }
+
+      function tweet() {
+        document.tweetForm.action = "https://twitter.com/intent/tweet";
+        document.tweetForm.url.value = "https://youtu.be/" + id;
+        document.tweetForm.submit();
       }
     </script>
   </body>
