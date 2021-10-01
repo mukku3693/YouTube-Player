@@ -44,6 +44,7 @@
     <script>
       let params = (new URL(document.location)).searchParams;
       let id = params.get('id');
+      let list = params.get('list');
 
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
@@ -66,6 +67,7 @@
 
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
+        event.target.cuePlaylist({list: list});
         event.target.playVideo();
       }
 
