@@ -16,18 +16,21 @@
       <div id="player"></div>
     </div>
     <div class="container-fluid my-3">
-      <form method="get" class="row g-2 d-flex justify-content-end" id="tweetForm" name="tweetForm">
-        <input id="url" name="url" type="hidden">
-        <div class="col-sm-8">
-          <textarea class="form-control" id="text" name="text" rows="5"></textarea>
-        </div>
-        <input id="via" name="via" type="hidden" value="YouTube">
-        <input id="related" name="related" type="hidden" value="YouTube,YouTubeTrends,YTCreators">
-        <div class="col-auto d-flex align-items-end">
-          <button type="submit" class="btn btn-primary" onclick="tweet()">Submit</button>
-        </div>
-      </form>
+      <div id="tweets">
+        <form method="get" class="row g-2 d-flex justify-content-end" id="tweetForm" name="tweetForm">
+          <input id="url" name="url" type="hidden">
+          <div class="col-sm-8">
+            <textarea class="form-control" id="text" name="text" rows="5"></textarea>
+          </div>
+          <input id="via" name="via" type="hidden" value="YouTube">
+          <input id="related" name="related" type="hidden" value="YouTube,YouTubeTrends,YTCreators">
+          <div class="col-auto d-flex align-items-end">
+            <button type="submit" class="btn btn-primary" onclick="tweet()">Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -45,6 +48,7 @@
       let params = (new URL(document.location)).searchParams;
       let id = params.get('id');
       let list = params.get('list');
+      let twitter = params.get('twitter');
 
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
@@ -75,6 +79,10 @@
         document.tweetForm.action = "https://twitter.com/intent/tweet";
         document.tweetForm.url.value = "https://youtu.be/" + id;
         document.tweetForm.submit();
+      }
+
+      if (twitter) {
+        document.getElementById('tweets').innerHTML = '<a class="twitter-timeline" data-lang="en" href="https://twitter.com/' + twitter + '?ref_src=twsrc%5Etfw">Tweets by ' + twitter + '</a>';
       }
     </script>
   </body>
