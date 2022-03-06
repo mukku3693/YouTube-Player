@@ -70,7 +70,9 @@
         player.getPlayerState() == -1 || player.getPlayerState() == 2 ? player.playVideo() : player.pauseVideo();
       }
 
-      document.getElementById('tweets').innerHTML = '<a class="twitter-timeline" data-lang="en" href="https://twitter.com/' + twitter + '?ref_src=twsrc%5Etfw">Tweets by ' + twitter + '</a>';
+      if (twitter) {
+        document.getElementById('tweets').innerHTML = '<a class="twitter-timeline" data-lang="en" href="https://twitter.com/' + twitter + '?ref_src=twsrc%5Etfw">Tweets by ' + twitter + '</a>';
+      }
     </script>
 
     <!-- Bootstrap Bundle with Popper -->
