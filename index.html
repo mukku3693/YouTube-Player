@@ -21,14 +21,16 @@
       <div id="player"></div>
     </div>
 
-    <div id="tweets"></div> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <div class="container-fluid mt-2">
+      <div id="tweets"></div> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
 
     <nav class="navbar navbar-dark bg-dark fixed-bottom">
       <form class="container-fluid justify-content-center">
         <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-outline-light" onclick="back(5)">5 seconds back</button>
+          <button type="button" class="btn btn-outline-light" onclick="back(5)">back</button>
           <button type="button" class="btn btn-outline-light" onclick="pause()">pause</button>
-          <button type="button" class="btn btn-outline-light" onclick="forward(5)">5 seconds forward</button>
+          <button type="button" class="btn btn-outline-light" onclick="forward(5)">forward</button>
         </div>
       </form>
     </nav>
