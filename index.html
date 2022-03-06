@@ -21,13 +21,17 @@
       <div id="player"></div>
     </div>
 
-    <form class="d-grid gap-2 d-md-flex justify-content-md-end mx-2 mt-2">
-      <button type="button" class="btn btn-primary btn-lg" onclick="back(5)">5 seconds back</button>
-      <button type="button" class="btn btn-primary btn-lg" onclick="forward(5)">5 seconds forward</button>
-      <button type="button" class="btn btn-primary btn-lg" onclick="pause()">pause</button>
-    </form>
-
     <div id="tweets"></div> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <nav class="navbar navbar-dark bg-dark fixed-bottom">
+      <form class="container-fluid justify-content-center">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-outline-light" onclick="back(5)">5 seconds back</button>
+          <button type="button" class="btn btn-outline-light" onclick="pause()">pause</button>
+          <button type="button" class="btn btn-outline-light" onclick="forward(5)">5 seconds forward</button>
+        </div>
+      </form>
+    </nav>
 
     <script>
       let params = (new URL(document.location)).searchParams;
