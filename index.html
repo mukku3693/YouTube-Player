@@ -22,15 +22,24 @@
     </div>
 
     <div class="container-fluid mt-2">
+      <form action="https://twitter.com/intent/tweet" method="GET" name="tweet">
+	<input id="url" name="url" type="hidden">
+        <div id="textarea"></div>
+	<input type="hidden" name="via" value="YouTube">
+        <input type="hidden" name="related" value="YouTube,YouTubeTrends,YTCreators">
+        <div class="d-flex justify-content-end mt-2">
+          <button type="submit" class="btn btn-primary" onclick="share()">Submit</button>
+        </div>
+      </form>
       <div id="tweets"></div> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
 
     <nav class="navbar fixed-bottom mb-2">
       <form class="container-fluid justify-content-center">
         <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-primary" onclick="back(5)">back</button>
-          <button type="button" class="btn btn-primary" onclick="pause()">pause</button>
-          <button type="button" class="btn btn-primary" onclick="forward(5)">forward</button>
+          <button type="button" class="btn btn-primary" onclick="back(10)">Back</button>
+          <button type="button" class="btn btn-primary" onclick="pause()">Pause</button>
+          <button type="button" class="btn btn-primary" onclick="forward(10)">Forward</button>
         </div>
       </form>
     </nav>
@@ -74,6 +83,13 @@
       }
       function pause() {
         player.getPlayerState() == -1 || player.getPlayerState() == 2 ? player.playVideo() : player.pauseVideo();
+      }
+
+      document.getElementById('textarea').innerHTML = '<textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="text">' + '\n\n' + 'https://youtu.be/' + video + '</textarea>';
+
+      function share() {
+        document.tweet.url.value = "https://youtu.be/" + video;
+        document.tweet.submit();
       }
 
       if (twitter) {
