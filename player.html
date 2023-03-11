@@ -20,10 +20,10 @@
       </div>
     </div>
     <script>
-      let params = (new URL(document.location)).searchParams;
-      let videoId = params.get('id');
-      let suggestedRate = params.get('rate') || '1';
-      let twitter = params.get('twitter');
+      let params = (new URL(document.location)).searchParams.get('id').split(',');
+      let videoId = params[0];
+      let suggestedRate = params[1] || '1';
+      let twitter = params[2];
 
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');

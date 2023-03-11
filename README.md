@@ -1,6 +1,6 @@
 # YouTube Player
 
-`https://mukku3693.github.io/YouTube-Player/player.html?rate=1.75&id=`
+`https://mukku3693.github.io/YouTube-Player/player.html?id=`
 
 ## IFrame Player API
 
