@@ -16,13 +16,14 @@
         <button type="button" class="btn btn-secondary flex-fill m-1" onclick="rewind(10)">Rewind</button>
 	<button type="button" class="btn btn-secondary active flex-fill m-1" data-bs-toggle="button" aria-pressed="true" onclick="pause()">Play / Pause</button>
         <button type="button" class="btn btn-secondary flex-fill m-1" onclick="advance(10)">Advance</button>
-        <button type="button" class="btn btn-secondary flex-fill m-1" onclick="skip(90)">Skip</button>
+        <button type="button" class="btn btn-secondary flex-fill m-1" onclick="skip()">Skip</button>
       </div>
     </div>
     <script>
       let params = (new URL(document.location)).searchParams.get('id').split(',');
       let videoId = params[0];
       let suggestedRate = params[1] || '1';
+      let skip = params[2] || '0';
 
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
@@ -78,8 +79,8 @@
       function advance(seconds) {
         player.seekTo(player.getCurrentTime() + seconds);
       }
-      function skip(seconds) {
-        player.seekTo(player.getCurrentTime() + seconds);
+      function skip() {
+        player.seekTo(player.getCurrentTime() + Number(skip));
       }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
